@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: コードをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.js をセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 依存関係をインストール
+        run: npm ci
+
+      - name: Playwright ブラウザーを取得
+        run: npx playwright install --with-deps chromium
+
+      - name: Prettier 形式チェック
+        run: npm run format:check
+
+      - name: HTMLLint を実行
+        run: npm run lint:html
+
+      - name: Playwright テストを実行
+        run: npm test
