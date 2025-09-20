@@ -1,0 +1,22 @@
+{
+  "name": "demo-codex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "lint:html": "npx htmlhint index.html dummy.html",
+    "format": "npx prettier --write \"*.html\" \"assets/css/**/*.css\" \"assets/js/**/*.js\" \"tests/**/*.js\" playwright.config.js",
+    "format:check": "npx prettier --check \"*.html\" \"assets/css/**/*.css\" \"assets/js/**/*.js\" \"tests/**/*.js\" playwright.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/mcp": "^0.0.38",
+    "@playwright/test": "^1.55.0",
+    "htmlhint": "^1.1.5",
+    "prettier": "^3.2.5"
+  }
+}
